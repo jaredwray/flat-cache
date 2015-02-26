@@ -1,0 +1,113 @@
+var path = require( 'path' );
+var fs = require( 'graceful-fs' );
+var readJSON = require( 'read-json-sync' );
+var write = require( 'write' );
+
+var cache = {
+  /**
+   * Load a cache identified by the given Id. If the element does not exists, then initialize an empty
+   * cache storage. If specified `cacheDir` will be used as the directory to persist the data to. If omitted
+   * then the cache module directory `./cache` will be used instead
+   *
+   * @method load
+   * @param docId {String} the id of the cache, would also be used as the name of the file cache
+   * @param [cacheDir] {String} directory for the cache entry
+   */
+  load: function ( docId, cacheDir ) {
+    var me = this;
+
+    me._visited = {};
+    me._persisted = {};
+    me._pathToFile = cacheDir ? path.resolve(cacheDir, docId) : path.resolve( __dirname, './.cache/', docId );
+
+    if ( fs.existsSync( me._pathToFile ) ) {
+      this._persisted = readJSON( me._pathToFile );
+    }
+  },
+  keys: function () {
+    return Object.keys(this._persisted);
+  },
+  /**
+   * sets a key to a given value
+   * @method setKey
+   * @param key {string} the key to set
+   * @param value {object} the value of the key. Could be any object that can be serialized with JSON.stringify
+   */
+  setKey: function ( key, value ) {
+    this._visited[ key ] = true;
+    this._persisted[ key ] = value;
+  },
+  /**
+   * remove a given key from the cache
+   * @method removeKey
+   * @param key {String} the key to remove from the object
+   */
+  removeKey: function ( key ) {
+    delete this._visited[ key ];
+    delete this._persisted[ key ];
+  },
+  /**
+   * Return the value of the provided key
+   * @method getKey
+   * @param key {String} the name of the key to retrieve
+   * @returns {*} the value from the key
+   */
+  getKey: function ( key ) {
+    this._visited[ key ] = true;
+    return this._persisted[ key ];
+  },
+
+  /**
+   * Remove keys that were not accessed/set since the
+   * last time the `prune` method was called.
+   * @method _prune
+   * @private
+   */
+  _prune: function () {
+    var me = this;
+    var obj = {};
+
+    var keys = Object.keys( me._visited );
+
+    // no keys visited for either get or set value
+    if ( keys.length === 0 ) {
+      return;
+    }
+
+    keys.forEach( function ( key ) {
+      obj[ key ] = me._persisted[ key ];
+    } );
+
+    me._visited = {};
+    me._persisted = obj;
+  },
+
+  /**
+   * Save the state of the cache identified by the docId to disk
+   * as a JSON structure
+   * @method save
+   */
+  save: function () {
+    var me = this;
+
+    me._prune();
+    write.sync( me._pathToFile, JSON.stringify( me._persisted) );
+  }
+};
+
+module.exports = {
+  /**
+   * Load a cache identified by the given Id. If the element does not exists, then initialize an empty
+   * cache storage.
+   *
+   * @method load
+   * @param docId {String} the id of the cache, would also be used as the name of the file cache
+   * @param [cacheDir] {String} directory for the cache entry
+   * @returns {cache} cache instance
+   */
+  load: function ( docId, cacheDir ) {
+    var obj = Object.create( cache );
+    obj.load( docId, cacheDir );
+    return obj;
+  }
+};
