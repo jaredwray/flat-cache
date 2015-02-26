@@ -36,20 +36,19 @@ var cache = require('flat-cache').load('cacheId', path.resolve('./path/to/folder
 
 ## Motivation for this module
 
-I needed a super simple and dumb in memory cache with optional disk persistance in order to make 
-a script that formatted files with `esformatter` only execute on the files that were changed since the last run.
+I needed a super simple and dumb **in-memory cache** with optional disk persistance in order to make 
+a script that will beutify files with `esformatter` only execute on the files that were changed since the last run.
 To make that possible we need to store the `fileSize` and `modificationTime` of the files. So a simple `key/value` 
 storage was needed and Bam! this module was born.
 
 ## Important notes
-
-- when `cache.save` is called the values are persisted to disk, if you're committing your `node_modules` to any vcs, you
+- If no directory is especified when the `load` method is called, a folder named `.cache` will be created 
+  inside the module directory when `cache.save` is called. If you're committing your `node_modules` to any vcs, you
   might want to ignore the default `.cache` folder, or specify a custom directory.
 - The values set on the keys of the cache should be `stringify-able` ones, meaning no circular references
 - All the changes to the cache state are done to memory
-- I could have use a timer or `Object.observe` to deliver the changes to disk, but I wanted to keep this module
-  to be intentionally dumb and simple
-- If no directory
+- I could have used a timer or `Object.observe` to deliver the changes to disk, but I wanted to keep this module
+  intentionally dumb and simple
 
 ## License 
 
