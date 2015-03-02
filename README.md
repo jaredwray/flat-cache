@@ -13,9 +13,10 @@ npm i --save flat-cache
 ## Usage
 
 ```js
+var flatCache = require('flat-cache')
 // loads the cache, if one does not exists for the given 
 // Id a new one will be prepared to be created
-var cache = require('flat-cache').load('cacheId');
+var cache = flatCache.load('cacheId');
 
 // sets a key on the cache
 cache.setKey('key', { foo: 'var' });
@@ -31,7 +32,14 @@ cache.save(); // very important, if you don't save no changes will be persisted.
 
 // loads the cache from a given directory, if one does 
 // not exists for the given Id a new one will be prepared to be created
-var cache = require('flat-cache').load('cacheId', path.resolve('./path/to/folder'));
+var cache = flatCache.load('cacheId', path.resolve('./path/to/folder'));
+
+// The following methods are useful to clear the cache
+// delete a given cache
+flatCache.clearCacheById('cacheId') // removes the cacheId document if one exists.
+
+// delete all cache
+flatCache.clearAll(); // remove the cache directory
 ```
 
 ## Motivation for this module
