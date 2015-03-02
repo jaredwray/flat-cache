@@ -2,6 +2,7 @@ var path = require( 'path' );
 var fs = require( 'graceful-fs' );
 var readJSON = require( 'read-json-sync' );
 var write = require( 'write' );
+var del = require('del').sync;
 
 var cache = {
   /**
@@ -109,5 +110,27 @@ module.exports = {
     var obj = Object.create( cache );
     obj.load( docId, cacheDir );
     return obj;
+  },
+  /**
+   * Clear the cache identified by the given id. Caches stored in a different cache directory can be deleted directly
+   *
+   * @method clearCache
+   * @param docId {String} the id of the cache, would also be used as the name of the file cache
+   * @returns {Boolean} true if the cache folder was deleted. False otherwise
+   */
+  clearCacheById: function (docId) {
+    return del(path.resolve( __dirname, './.cache/', docId ), {
+      force: true
+    }).length > 0;
+  },
+  /**
+   * Remove all cache stored in the cache directory
+   * @method clearAll
+   * @returns {Boolean} true if the cache folder was deleted. False otherwise
+   */
+  clearAll: function () {
+    return del(path.resolve( __dirname, './.cache/'), {
+      force: true
+    }).length > 0;
   }
 };
