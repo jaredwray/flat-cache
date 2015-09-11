@@ -47,6 +47,18 @@
     "key value",
     "cache"
   ],
+   "changelogx": {
+    "ignoreRegExp": [
+      "BLD: Release",
+      "DOC: Generate Changelog",
+      "Generated Changelog"
+    ],
+    "issueIDRegExp": "#(\\d+)",
+    "commitURL": "https://github.com/royriojas/flat-cache/commit/{0}",
+    "authorURL": "https://github.com/{0}",
+    "issueIDURL": "https://github.com/royriojas/flat-cache/issues/{0}",
+    "projectName": "flat-cache"
+  },
   "devDependencies": {
     "chai": "^3.2.0",
     "changelogx": "^1.0.18",
