@@ -1,6 +1,6 @@
 {
   "name": "flat-cache",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "A stupidly simple key/value storage using files to persist some data",
   "repository": "royriojas/flat-cache",
   "license": "MIT",
@@ -47,7 +47,7 @@
     "key value",
     "cache"
   ],
-   "changelogx": {
+  "changelogx": {
     "ignoreRegExp": [
       "BLD: Release",
       "DOC: Generate Changelog",
