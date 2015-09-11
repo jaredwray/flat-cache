@@ -64,4 +64,5 @@ MIT
 
 ## Changelog
 
+[changelog](./changelog.md)
 
