@@ -17,8 +17,8 @@ var cache = {
   load: function ( docId, cacheDir ) {
     var me = this;
 
-    me._visited = {};
-    me._persisted = {};
+    me._visited = { };
+    me._persisted = { };
     me._pathToFile = cacheDir ? path.resolve( cacheDir, docId ) : path.resolve( __dirname, './.cache/', docId );
 
     if ( fs.existsSync( me._pathToFile ) ) {
@@ -80,7 +80,7 @@ var cache = {
    */
   _prune: function () {
     var me = this;
-    var obj = {};
+    var obj = { };
 
     var keys = Object.keys( me._visited );
 
@@ -93,7 +93,7 @@ var cache = {
       obj[ key ] = me._persisted[ key ];
     } );
 
-    me._visited = {};
+    me._visited = { };
     me._persisted = obj;
   },
 
@@ -115,9 +115,7 @@ var cache = {
    * @return {Boolean} true or false if the file was successfully deleted
    */
   removeCacheFile: function () {
-    return del( this._pathToFile, {
-      force: true
-    } );
+    return del( this._pathToFile, { force: true } );
   },
   /**
    * Destroy the file cache and cache content.
@@ -125,8 +123,8 @@ var cache = {
    */
   destroy: function () {
     var me = this;
-    me._visited = {};
-    me._persisted = {};
+    me._visited = { };
+    me._persisted = { };
 
     me.removeCacheFile();
   }
@@ -175,9 +173,7 @@ module.exports = {
    */
   clearCacheById: function ( docId, cacheDir ) {
     var filePath = cacheDir ? path.resolve( cacheDir, docId ) : path.resolve( __dirname, './.cache/', docId );
-    return del( filePath, {
-        force: true
-      } ).length > 0;
+    return del( filePath, { force: true } ).length > 0;
   },
   /**
    * Remove all cache stored in the cache directory

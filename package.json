@@ -15,7 +15,26 @@
   "engines": {
     "node": ">=0.10.0"
   },
+  "precommit": [
+    "npm run verify --silent"
+  ],
+  "prepush": [
+    "npm run verify --silent"
+  ],
   "scripts": {
+    "beautify": "esbeautifier 'cache.js' 'specs/**/*.js'",
+    "beautify-check": "esbeautifier -k 'cache.js' 'specs/**/*.js'",
+    "eslint": "eslinter 'cache.js' 'specs/**/*.js'",
+    "lint": "npm run beautify && npm run eslint",
+    "verify": "npm run beautify-check && npm run eslint",
+    "install-hooks": "prepush install && changelogx install-hook && precommit install",
+    "changelog": "changelogx -f markdown -o ./changelog.md",
+    "do-changelog": "npm run changelog && git add ./changelog.md && git commit -m 'DOC: Generate changelog' --no-verify",
+    "pre-v": "npm run verify",
+    "post-v": "npm run do-changelog && git push --no-verify && git push --tags --no-verify",
+    "bump-major": "npm run pre-v && npm version major -m 'BLD: Release v%s' && npm run post-v",
+    "bump-minor": "npm run pre-v && npm version minor -m 'BLD: Release v%s' && npm run post-v",
+    "bump-patch": "npm run pre-v && npm version patch -m 'BLD: Release v%s' && npm run post-v",
     "test": "mocha -R spec test/specs",
     "cover": "istanbul cover test/runner.js html text-summary",
     "watch": "watch-run -i -p 'test/specs/**/*.js' istanbul cover test/runner.js html text-summary"
@@ -39,8 +58,13 @@
     "watch-run": "^1.2.2"
   },
   "dependencies": {
+    "changelogx": "^1.0.18",
     "del": "^2.0.2",
+    "esbeautifier": "^4.2.11",
+    "eslinter": "^2.3.3",
     "graceful-fs": "^4.1.2",
+    "precommit": "^1.1.5",
+    "prepush": "^3.1.4",
     "read-json-sync": "^1.1.0",
     "write": "^0.2.1"
   }

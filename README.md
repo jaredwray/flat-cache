@@ -14,7 +14,7 @@ npm i --save flat-cache
 
 ```js
 var flatCache = require('flat-cache')
-// loads the cache, if one does not exists for the given 
+// loads the cache, if one does not exists for the given
 // Id a new one will be prepared to be created
 var cache = flatCache.load('cacheId');
 
@@ -30,7 +30,7 @@ cache.removeKey('key'); // removes a key from the cache
 // save it to disk
 cache.save(); // very important, if you don't save no changes will be persisted.
 
-// loads the cache from a given directory, if one does 
+// loads the cache from a given directory, if one does
 // not exists for the given Id a new one will be prepared to be created
 var cache = flatCache.load('cacheId', path.resolve('./path/to/folder'));
 
@@ -44,13 +44,13 @@ flatCache.clearAll(); // remove the cache directory
 
 ## Motivation for this module
 
-I needed a super simple and dumb **in-memory cache** with optional disk persistance in order to make 
+I needed a super simple and dumb **in-memory cache** with optional disk persistance in order to make
 a script that will beutify files with `esformatter` only execute on the files that were changed since the last run.
-To make that possible we need to store the `fileSize` and `modificationTime` of the files. So a simple `key/value` 
+To make that possible we need to store the `fileSize` and `modificationTime` of the files. So a simple `key/value`
 storage was needed and Bam! this module was born.
 
 ## Important notes
-- If no directory is especified when the `load` method is called, a folder named `.cache` will be created 
+- If no directory is especified when the `load` method is called, a folder named `.cache` will be created
   inside the module directory when `cache.save` is called. If you're committing your `node_modules` to any vcs, you
   might want to ignore the default `.cache` folder, or specify a custom directory.
 - The values set on the keys of the cache should be `stringify-able` ones, meaning no circular references
@@ -58,8 +58,10 @@ storage was needed and Bam! this module was born.
 - I could have used a timer or `Object.observe` to deliver the changes to disk, but I wanted to keep this module
   intentionally dumb and simple
 
-## License 
+## License
 
 MIT
+
+## Changelog
 
 
