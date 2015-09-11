@@ -1,5 +1,14 @@
 
 # flat-cache - Changelog
+## v1.0.7
+- **Other changes**
+  - Move dependencies into devDep - [7e47099]( https://github.com/[object Object]/flat-cache/commit/7e47099 ), [Bogdan Chadkin](https://github.com/Bogdan Chadkin), 11/09/2015 17:10:57
+
+    
+- **Documentation**
+  - Add missing changelog link - [f51197a]( https://github.com/[object Object]/flat-cache/commit/f51197a ), [royriojas](https://github.com/royriojas), 11/09/2015 16:48:05
+
+    
 ## v1.0.6
 - **Build Scripts Changes**
   - Add helpers/code check scripts - [bdb82f3]( https://github.com/[object Object]/flat-cache/commit/bdb82f3 ), [royriojas](https://github.com/royriojas), 11/09/2015 16:44:31
