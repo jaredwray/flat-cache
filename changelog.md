@@ -1,5 +1,10 @@
 
 # flat-cache - Changelog
+## v1.0.8
+- **Build Scripts Changes**
+  - test against node 4 - [c395b66]( https://github.com/[object Object]/flat-cache/commit/c395b66 ), [royriojas](https://github.com/royriojas), 11/09/2015 17:51:39
+
+    
 ## v1.0.7
 - **Other changes**
   - Move dependencies into devDep - [7e47099]( https://github.com/[object Object]/flat-cache/commit/7e47099 ), [Bogdan Chadkin](https://github.com/Bogdan Chadkin), 11/09/2015 17:10:57
