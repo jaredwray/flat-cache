@@ -26,7 +26,7 @@
     "beautify-check": "esbeautifier -k 'cache.js' 'specs/**/*.js'",
     "eslint": "eslinter 'cache.js' 'specs/**/*.js'",
     "lint": "npm run beautify && npm run eslint",
-    "verify": "npm run beautify-check && npm run eslint",
+    "verify": "npm run beautify-check && npm run eslint && npm run test:cache",
     "install-hooks": "prepush install && changelogx install-hook && precommit install",
     "changelog": "changelogx -f markdown -o ./changelog.md",
     "do-changelog": "npm run changelog && git add ./changelog.md && git commit -m 'DOC: Generate changelog' --no-verify",
@@ -35,7 +35,8 @@
     "bump-major": "npm run pre-v && npm version major -m 'BLD: Release v%s' && npm run post-v",
     "bump-minor": "npm run pre-v && npm version minor -m 'BLD: Release v%s' && npm run post-v",
     "bump-patch": "npm run pre-v && npm version patch -m 'BLD: Release v%s' && npm run post-v",
-    "test": "mocha -R spec test/specs",
+    "test:cache": "mocha -R spec test/specs",
+    "test": "npm run verify --silent",
     "cover": "istanbul cover test/runner.js html text-summary",
     "watch": "watch-run -i -p 'test/specs/**/*.js' istanbul cover test/runner.js html text-summary"
   },
