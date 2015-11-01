@@ -58,8 +58,8 @@ var cache = {
    * @param key {String} the key to remove from the object
    */
   removeKey: function ( key ) {
-    delete this._visited[ key ];
-    delete this._persisted[ key ];
+    delete this._visited[ key ]; // esfmt-ignore-line
+    delete this._persisted[ key ]; // esfmt-ignore-line
   },
   /**
    * Return the value of the provided key
@@ -180,10 +180,8 @@ module.exports = {
    * @method clearAll
    * @returns {Boolean} true if the cache folder was deleted. False otherwise
    */
-  clearAll: function (cacheDir) {
+  clearAll: function ( cacheDir ) {
     var filePath = cacheDir ? path.resolve( cacheDir ) : path.resolve( __dirname, './.cache/' );
-    return del( filePath, {
-        force: true
-      } ).length > 0;
+    return del( filePath, { force: true } ).length > 0;
   }
 };
