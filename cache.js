@@ -180,8 +180,9 @@ module.exports = {
    * @method clearAll
    * @returns {Boolean} true if the cache folder was deleted. False otherwise
    */
-  clearAll: function () {
-    return del( path.resolve( __dirname, './.cache/' ), {
+  clearAll: function (cacheDir) {
+    var filePath = cacheDir ? path.resolve( cacheDir ) : path.resolve( __dirname, './.cache/' );
+    return del( filePath, {
         force: true
       } ).length > 0;
   }
