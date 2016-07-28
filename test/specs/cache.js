@@ -1,7 +1,7 @@
 describe( 'flat-cache', function () {
   'use strict';
   var expect = require( 'chai' ).expect;
-  var readJSON = require( 'read-json-sync' );
+  var readJSON = require( '../../utils.js' ).readJSON;
   var path = require( 'path' );
   var del = require( 'del' ).sync;
   var fs = require( 'fs' );
@@ -220,6 +220,22 @@ describe( 'flat-cache', function () {
 
       expect( fs.existsSync( file ) ).to.be.false;
     } );
+  } );
+
+  it( 'should serialize and deserialize properly circular reference', function () {
+    var cache = flatCache.load( 'someId' );
+    var data = {
+      foo: 'foo',
+      bar: 'bar'
+    };
+
+    data.circular = data
+
+    cache.setKey( 'some-key', data );
+    expect( cache.getKey( 'some-key' ) ).to.deep.equal( data );
+
+    cache.save();
+    expect( readJSON( path.resolve( __dirname, '../../.cache/someId' ) )[ 'some-key' ] ).to.deep.equal( data );
   } );
 
 } );
