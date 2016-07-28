@@ -1,10 +1,8 @@
 var path = require( 'path' );
 var fs = require( 'graceful-fs' );
-var write = require( 'write' );
 var del = require( 'del' ).sync;
-var circularJson = require( 'circular-json' );
-
-var fileCache = { };
+var readJSON = require( './utils' ).readJSON;
+var writeJSON = require( './utils' ).writeJSON;
 
 var cache = {
   /**
@@ -24,8 +22,7 @@ var cache = {
     me._pathToFile = cacheDir ? path.resolve( cacheDir, docId ) : path.resolve( __dirname, './.cache/', docId );
 
     if ( fs.existsSync( me._pathToFile ) ) {
-      me._persisted = fileCache[ me._pathToFile ] || circularJson.parse( fs.readFileSync( me._pathToFile ).toString() );
-      fileCache[ me._pathToFile ] = me._persisted;
+      me._persisted = readJSON( me._pathToFile );
     }
   },
 
@@ -109,7 +106,7 @@ var cache = {
     var me = this;
 
     me._prune();
-    write.sync( me._pathToFile, circularJson.stringify( me._persisted ) );
+    writeJSON( me._pathToFile, me._persisted );
   },
 
   /**

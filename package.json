@@ -81,7 +81,6 @@
     "circular-json": "^0.3.0",
     "del": "^2.0.2",
     "graceful-fs": "^4.1.2",
-    "read-json-sync": "^1.1.0",
     "write": "^0.2.1"
   }
 }
