@@ -12,7 +12,7 @@ module.exports = {
    * @returns {*} parse result
    */
   readJSON: function ( filePath ) {
-    return circularJson.parse( fs.readFileSync( filePath ).toString().replace(/^\ufeff/g, '') );
+    return circularJson.parse( fs.readFileSync( filePath ).toString() );
   },
 
   /**
