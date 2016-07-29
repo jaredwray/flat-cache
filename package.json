@@ -24,7 +24,7 @@
   "scripts": {
     "beautify": "esbeautifier 'cache.js' 'specs/**/*.js'",
     "beautify-check": "npm run beautify -- -k",
-    "eslint": "eslinter 'cache.js' 'specs/**/*.js'",
+    "eslint": "eslinter 'cache.js' 'utils.js' 'specs/**/*.js'",
     "eslint-fix": "npm run eslint -- --fix",
     "autofix": "npm run beautify && npm run eslint-fix",
     "check": "npm run beautify-check && npm run eslint",
