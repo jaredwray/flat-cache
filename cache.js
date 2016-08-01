@@ -1,8 +1,8 @@
 var path = require( 'path' );
 var fs = require( 'graceful-fs' );
-var readJSON = require( 'read-json-sync' );
-var write = require( 'write' );
 var del = require( 'del' ).sync;
+var readJSON = require( './utils' ).readJSON;
+var writeJSON = require( './utils' ).writeJSON;
 
 var cache = {
   /**
@@ -106,7 +106,7 @@ var cache = {
     var me = this;
 
     me._prune();
-    write.sync( me._pathToFile, JSON.stringify( me._persisted ) );
+    writeJSON( me._pathToFile, me._persisted );
   },
 
   /**
