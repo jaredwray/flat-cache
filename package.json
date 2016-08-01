@@ -10,7 +10,8 @@
   },
   "main": "cache.js",
   "files": [
-    "cache.js"
+    "cache.js",
+    "utils.js"
   ],
   "engines": {
     "node": ">=0.10.0"
