@@ -1,5 +1,10 @@
 
 # flat-cache - Changelog
+## v1.2.1
+- **Bug Fixes**
+  - Add missing utils.js file to the package. closes [#8](https://github.com/royriojas/flat-cache/issues/8) - [ec10cf2]( https://github.com/royriojas/flat-cache/commit/ec10cf2 ), [Roy Riojas](https://github.com/Roy Riojas), 01/08/2016 04:18:57
+
+    
 ## v1.2.0
 - **Documentation**
   - Add documentation about noPrune option - [23e11f9]( https://github.com/royriojas/flat-cache/commit/23e11f9 ), [Roy Riojas](https://github.com/Roy Riojas), 01/08/2016 04:06:49
