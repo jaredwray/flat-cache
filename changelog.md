@@ -1,5 +1,10 @@
 
 # flat-cache - Changelog
+## v1.2.0
+- **Documentation**
+  - Add documentation about noPrune option - [23e11f9]( https://github.com/royriojas/flat-cache/commit/23e11f9 ), [Roy Riojas](https://github.com/Roy Riojas), 01/08/2016 04:06:49
+
+    
 ## v1.0.11
 - **Features**
   - Add noPrune option to cache.save() method. closes [#7](https://github.com/royriojas/flat-cache/issues/7) - [2c8016a]( https://github.com/royriojas/flat-cache/commit/2c8016a ), [Roy Riojas](https://github.com/Roy Riojas), 01/08/2016 04:00:29
