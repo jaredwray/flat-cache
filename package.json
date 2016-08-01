@@ -22,7 +22,7 @@
     "npm run verify --silent"
   ],
   "scripts": {
-    "beautify": "esbeautifier 'cache.js' 'specs/**/*.js'",
+    "beautify": "esbeautifier 'cache.js' 'test/specs/**/*.js'",
     "beautify-check": "npm run beautify -- -k",
     "eslint": "eslinter 'cache.js' 'utils.js' 'specs/**/*.js'",
     "eslint-fix": "npm run eslint -- --fix",

@@ -9,22 +9,14 @@ describe( 'flat-cache', function () {
 
   beforeEach( function () {
     flatCache.clearAll();
-    del( path.resolve( __dirname, '../fixtures/.cache/' ), {
-      force: true
-    } );
-    del( path.resolve( __dirname, '../fixtures/.cache2/' ), {
-      force: true
-    } );
+    del( path.resolve( __dirname, '../fixtures/.cache/' ), { force: true } );
+    del( path.resolve( __dirname, '../fixtures/.cache2/' ), { force: true } );
   } );
 
   afterEach( function () {
     flatCache.clearAll();
-    del( path.resolve( __dirname, '../fixtures/.cache/' ), {
-      force: true
-    } );
-    del( path.resolve( __dirname, '../fixtures/.cache2/' ), {
-      force: true
-    } );
+    del( path.resolve( __dirname, '../fixtures/.cache/' ), { force: true } );
+    del( path.resolve( __dirname, '../fixtures/.cache2/' ), { force: true } );
   } );
 
   it( 'should create a cache object if none existed in disc with the given id', function () {
@@ -34,10 +26,7 @@ describe( 'flat-cache', function () {
 
   it( 'should set a key and persist it', function () {
     var cache = flatCache.load( 'someId' );
-    var data = {
-      foo: 'foo',
-      bar: 'bar'
-    };
+    var data = { foo: 'foo', bar: 'bar' };
 
     cache.setKey( 'some-key', data );
     expect( cache.getKey( 'some-key' ) ).to.deep.equal( data );
@@ -48,10 +37,7 @@ describe( 'flat-cache', function () {
 
   it( 'should remove a key from the cache object and persist the change', function () {
     var cache = flatCache.load( 'someId' );
-    var data = {
-      foo: 'foo',
-      bar: 'bar'
-    };
+    var data = { foo: 'foo', bar: 'bar' };
 
     cache.setKey( 'some-key', data );
     expect( cache.getKey( 'some-key' ) ).to.deep.equal( data );
@@ -67,12 +53,8 @@ describe( 'flat-cache', function () {
   describe( 'loading an existing cache', function () {
     beforeEach( function () {
       var cache = flatCache.load( 'someId' );
-      cache.setKey( 'foo', {
-        bar: 'baz'
-      } );
-      cache.setKey( 'bar', {
-        foo: 'baz'
-      } );
+      cache.setKey( 'foo', { bar: 'baz' } );
+      cache.setKey( 'bar', { foo: 'baz' } );
       cache.save();
     } );
 
@@ -120,12 +102,8 @@ describe( 'flat-cache', function () {
   describe( 'loading an existing cache custom directory', function () {
     beforeEach( function () {
       var cache = flatCache.load( 'someId', path.resolve( __dirname, '../fixtures/.cache2' ) );
-      cache.setKey( 'foo', {
-        bar: 'baz'
-      } );
-      cache.setKey( 'bar', {
-        foo: 'baz'
-      } );
+      cache.setKey( 'foo', { bar: 'baz' } );
+      cache.setKey( 'bar', { foo: 'baz' } );
       cache.save();
     } );
 
@@ -162,19 +140,13 @@ describe( 'flat-cache', function () {
   describe( 'loading a cache using a filePath directly', function () {
     var file = path.resolve( __dirname, '../fixtures/.cache2/mycache-file.cache' );
     beforeEach( function () {
-      del( file, {
-        force: true
-      } );
+      del( file, { force: true } );
     } );
 
     it( 'should create the file if it does not exists before', function () {
       var cache = flatCache.createFromFile( file );
-      cache.setKey( 'foo', {
-        bar: 'baz'
-      } );
-      cache.setKey( 'bar', {
-        foo: 'baz'
-      } );
+      cache.setKey( 'foo', { bar: 'baz' } );
+      cache.setKey( 'bar', { foo: 'baz' } );
 
       expect( fs.existsSync( file ) ).to.be.false;
       cache.save();
@@ -183,33 +155,23 @@ describe( 'flat-cache', function () {
 
     it( 'should delete the cache file using removeCacheFile', function () {
       var cache = flatCache.createFromFile( file );
-      cache.setKey( 'foo', {
-        bar: 'baz'
-      } );
-      cache.setKey( 'bar', {
-        foo: 'baz'
-      } );
+      cache.setKey( 'foo', { bar: 'baz' } );
+      cache.setKey( 'bar', { foo: 'baz' } );
 
       expect( fs.existsSync( file ) ).to.be.false;
       cache.save();
       expect( fs.existsSync( file ) ).to.be.true;
       cache.removeCacheFile();
 
-      expect( cache.getKey( 'foo' ) ).to.deep.equal( {
-        bar: 'baz'
-      } );
+      expect( cache.getKey( 'foo' ) ).to.deep.equal( { bar: 'baz' } );
 
       expect( fs.existsSync( file ) ).to.be.false;
     } );
 
     it( 'should delete the cache file using destroy', function () {
       var cache = flatCache.createFromFile( file );
-      cache.setKey( 'foo', {
-        bar: 'baz'
-      } );
-      cache.setKey( 'bar', {
-        foo: 'baz'
-      } );
+      cache.setKey( 'foo', { bar: 'baz' } );
+      cache.setKey( 'bar', { foo: 'baz' } );
 
       expect( fs.existsSync( file ) ).to.be.false;
       cache.save();
@@ -220,14 +182,94 @@ describe( 'flat-cache', function () {
 
       expect( fs.existsSync( file ) ).to.be.false;
     } );
+
+    it( 'should remove non "visited" entries', function () {
+      // a visited entry is one that was either queried
+      // using getKey or updated with setKey
+      var cache = flatCache.createFromFile( file );
+
+      cache.setKey( 'foo', { bar: 'baz' } );
+      cache.setKey( 'bar', { foo: 'baz' } );
+
+      cache.save();
+
+      var expectedResult = {
+        bar: {
+          foo: 'baz'
+        },
+        foo: {
+          bar: 'baz'
+        }
+      };
+
+      // first we expect to see both keys being persisted
+      expect( expectedResult ).to.deep.equal( readJSON( file ) );
+
+      // then we create the load the cache again
+      cache = flatCache.createFromFile( file );
+
+      // we query one key (visit)
+      var res = cache.getKey( 'foo' );
+
+      // then we check the value is what we stored
+      expect( res ).to.deep.equal( { bar: 'baz' } );
+
+      cache.save();
+
+      expectedResult = {
+        foo: {
+          bar: 'baz'
+        }
+      };
+
+      expect( expectedResult ).to.deep.equal( readJSON( file ) );
+
+    } );
+
+    it( 'should keep non "visited" entries if noProne is set to true', function () {
+      // a visited entry is one that was either queried
+      // using getKey or updated with setKey
+      var cache = flatCache.createFromFile( file );
+
+      cache.setKey( 'foo', { bar: 'baz' } );
+      cache.setKey( 'bar', { foo: 'baz' } );
+
+      // first time noPrune will have no effect,
+      // because all keys were visited
+      cache.save();
+
+      var expectedResult = {
+        bar: {
+          foo: 'baz'
+        },
+        foo: {
+          bar: 'baz'
+        }
+      };
+
+      // first we expect to see both keys being persisted
+      expect( expectedResult ).to.deep.equal( readJSON( file ) );
+
+      // then we create the load the cache again
+      cache = flatCache.createFromFile( file );
+
+      // we query one key (visit)
+      var res = cache.getKey( 'foo' );
+
+      // then we check the value is what we stored
+      expect( res ).to.deep.equal( { bar: 'baz' } );
+
+      cache.save( true /* noPrune */ );
+
+      expect( expectedResult ).to.deep.equal( readJSON( file ) );
+
+    } );
+
   } );
 
   it( 'should serialize and deserialize properly circular reference', function () {
     var cache = flatCache.load( 'someId' );
-    var data = {
-      foo: 'foo',
-      bar: 'bar'
-    };
+    var data = { foo: 'foo', bar: 'bar' };
 
     data.circular = data
 

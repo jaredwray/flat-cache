@@ -100,12 +100,13 @@ var cache = {
   /**
    * Save the state of the cache identified by the docId to disk
    * as a JSON structure
+   * @param [noPrune=false] {Boolean} whether to remove from cache the non visited files
    * @method save
    */
-  save: function () {
+  save: function ( noPrune ) {
     var me = this;
 
-    me._prune();
+    (!noPrune) && me._prune();
     writeJSON( me._pathToFile, me._persisted );
   },
 
