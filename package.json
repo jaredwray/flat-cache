@@ -79,7 +79,7 @@
     "watch-run": "^1.2.2"
   },
   "dependencies": {
-    "circular-json": "^0.3.0",
+    "circular-json": "^0.3.1",
     "del": "^2.0.2",
     "graceful-fs": "^4.1.2",
     "write": "^0.2.1"
