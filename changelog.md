@@ -21,6 +21,8 @@
     As mentioned in https://github.com/WebReflection/circular-json/issues/25 `circular-json` wan't rightly implementing the license field.
     
     Latest version bump changed only that bit so that ESLint should now be happy.
+
+
 ## v1.2.1
 - **Bug Fixes**
   - Add missing utils.js file to the package. closes [#8](https://github.com/royriojas/flat-cache/issues/8) - [ec10cf2]( https://github.com/royriojas/flat-cache/commit/ec10cf2 ), [Roy Riojas](https://github.com/Roy Riojas), 01/08/2016 04:18:57
