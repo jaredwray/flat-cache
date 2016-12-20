@@ -6,6 +6,7 @@ describe( 'flat-cache', function () {
   var del = require( 'del' ).sync;
   var fs = require( 'fs' );
   var flatCache = require( '../../cache' );
+  var write = require( 'write' );
 
   beforeEach( function () {
     flatCache.clearAll();
@@ -18,6 +19,27 @@ describe( 'flat-cache', function () {
     del( path.resolve( __dirname, '../fixtures/.cache/' ), { force: true } );
     del( path.resolve( __dirname, '../fixtures/.cache2/' ), { force: true } );
   } );
+
+  it( 'should not crash if the cache file exists but it is an empty string', function () {
+    var cachePath = path.resolve( __dirname, '../fixtures/.cache2' );
+    write.sync( path.join( cachePath, 'someId' ), '' );
+
+    expect( function () {
+      var cache = flatCache.load( 'someId', cachePath );
+      expect( cache._persisted ).to.deep.equal( { } );
+    } ).to.not.throw( Error )
+  } );
+
+  it( 'should not crash if the cache file exists but it is an invalid JSON string', function () {
+    var cachePath = path.resolve( __dirname, '../fixtures/.cache2' );
+    write.sync( path.join( cachePath, 'someId' ), '{ "foo": "fookey", "bar" ' );
+
+    expect( function () {
+      var cache = flatCache.load( 'someId', cachePath );
+      expect( cache._persisted ).to.deep.equal( { } );
+    } ).to.not.throw( Error )
+  } );
+
 
   it( 'should create a cache object if none existed in disc with the given id', function () {
     var cache = flatCache.load( 'someId' );
