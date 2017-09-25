@@ -311,7 +311,26 @@ describe( 'flat-cache', function () {
     };
 
     cache.setKey( 'some-key', data );
-    expect( cache.all() ).to.deep.equal( { 'some-key': data } );
+
+    var data2 = {
+      key: 9,
+      z: {
+        x: [ true, false ]
+      }
+  };
+
+    cache.setKey( 'some-second-key', data2 );
+
+
+    var data3 = true;
+
+    cache.setKey( 'some-third-key', data3 );
+
+    expect( cache.all() ).to.deep.equal( {
+      'some-key': data,
+      'some-second-key': data2,
+      'some-third-key': data3
+    } );
   } );
 
 } );
