@@ -317,7 +317,7 @@ describe( 'flat-cache', function () {
       z: {
         x: [ true, false ]
       }
-  };
+    };
 
     cache.setKey( 'some-second-key', data2 );
 
