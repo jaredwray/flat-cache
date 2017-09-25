@@ -302,4 +302,35 @@ describe( 'flat-cache', function () {
     expect( readJSON( path.resolve( __dirname, '../../.cache/someId' ) )[ 'some-key' ] ).to.deep.equal( data );
   } );
 
+  it( 'should return the entire persisted object', function () {
+    var cache = flatCache.load( 'someId' );
+    var data = {
+      foo: 'foo',
+      bar: true,
+      x: [ '0', '1' ]
+    };
+
+    cache.setKey( 'some-key', data );
+
+    var data2 = {
+      key: 9,
+      z: {
+        x: [ true, false ]
+      }
+    };
+
+    cache.setKey( 'some-second-key', data2 );
+
+
+    var data3 = true;
+
+    cache.setKey( 'some-third-key', data3 );
+
+    expect( cache.all() ).to.deep.equal( {
+      'some-key': data,
+      'some-second-key': data2,
+      'some-third-key': data3
+    } );
+  } );
+
 } );
