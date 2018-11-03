@@ -79,7 +79,7 @@
     "watch-run": "^1.2.2"
   },
   "dependencies": {
-    "del": "^2.0.2",
+    "del": "^3.0.0",
     "flatted": "^2.0.0",
     "graceful-fs": "^4.1.2",
     "write": "^0.2.1"
