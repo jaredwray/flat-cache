@@ -23,9 +23,9 @@
     "npm run verify --silent"
   ],
   "scripts": {
-    "beautify": "esbeautifier 'cache.js' 'test/specs/**/*.js'",
+    "beautify": "esbeautifier cache.js test/specs/**/*.js",
     "beautify-check": "npm run beautify -- -k",
-    "eslint": "eslinter 'cache.js' 'utils.js' 'specs/**/*.js'",
+    "eslint": "eslinter cache.js utils.js specs/**/*.js",
     "eslint-fix": "npm run eslint -- --fix",
     "autofix": "npm run beautify && npm run eslint-fix",
     "check": "npm run beautify-check && npm run eslint",
@@ -79,8 +79,8 @@
     "watch-run": "^1.2.2"
   },
   "dependencies": {
-    "circular-json": "^0.3.1",
     "del": "^3.0.0",
+    "flatted": "^2.0.0",
     "graceful-fs": "^4.1.2",
     "write": "^0.2.1"
   }
