@@ -1,6 +1,6 @@
 var fs = require( 'graceful-fs' );
 var write = require( 'write' );
-var flatted = require( 'flatted' );
+var circularJson = require( 'circular-json' );
 
 module.exports = {
 
@@ -15,25 +15,25 @@ module.exports = {
   },
 
   /**
-   * Read json file synchronously using flatted
+   * Read json file synchronously using circular-json
    *
    * @method readJSON
    * @param  {String} filePath Json filepath
    * @returns {*} parse result
    */
   readJSON: function ( filePath ) {
-    return flatted.parse( fs.readFileSync( filePath ).toString() );
+    return circularJson.parse( fs.readFileSync( filePath ).toString() );
   },
 
   /**
-   * Write json file synchronously using flatted
+   * Write json file synchronously using circular-json
    *
    * @method writeJSON
    * @param  {String} filePath Json filepath
    * @param  {*} data Object to serialize
    */
   writeJSON: function (filePath, data ) {
-    write.sync( filePath, flatted.stringify( data ) );
+    write.sync( filePath, circularJson.stringify( data ) );
   }
 
 };
