@@ -1,5 +1,15 @@
 
 # flat-cache - Changelog
+## v1.3.2
+- **Refactoring**
+  - remove yarn.lock file - [704c6c4]( https://github.com/royriojas/flat-cache/commit/704c6c4 ), [Roy Riojas](https://github.com/Roy Riojas), 07/11/2018 18:41:08
+
+    
+- **undefined**
+  - replace circular-json with flatted ([#23](https://github.com/royriojas/flat-cache/issues/23))" - [db12d74]( https://github.com/royriojas/flat-cache/commit/db12d74 ), [Roy Riojas](https://github.com/Roy Riojas), 07/11/2018 18:40:39
+
+    This reverts commit 00f689277a75e85fef28e6a048fad227afc525e6.
+    
 ## v1.3.1
 - **Refactoring**
   - upgrade deps to remove some security warnings - [f405719]( https://github.com/royriojas/flat-cache/commit/f405719 ), [Roy Riojas](https://github.com/Roy Riojas), 06/11/2018 15:07:31
