@@ -126,7 +126,7 @@ var cache = {
    */
   removeCacheFile: function () {
     rimraf( this._pathToFile );
-    return !fs.existsSync( this._pathToFile );
+    return !fs.existsSync( this._pathToFile, {glob: false} );
   },
   /**
    * Destroy the file cache and cache content.
@@ -187,7 +187,7 @@ module.exports = {
     if ( !fs.existsSync( filePath ) ) {
       return false;
     }
-    rimraf( filePath );
+    rimraf( filePath, {glob: false} );
     return true;
   },
   /**
@@ -200,7 +200,7 @@ module.exports = {
     if ( !fs.existsSync( filePath ) ) {
       return false;
     }
-    rimraf( filePath );
+    rimraf( filePath, {glob: false} );
     return true;
   }
 };
