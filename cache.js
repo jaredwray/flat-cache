@@ -1,7 +1,7 @@
 var path = require( 'path' );
 var fs = require( 'graceful-fs' );
 var utils = require( './utils' );
-var rimraf = require( 'rimraf' ).sync;
+var del = require( './del' );
 var writeJSON = utils.writeJSON;
 
 var cache = {
@@ -125,8 +125,7 @@ var cache = {
    * @return {Boolean} true or false if the file was successfully deleted
    */
   removeCacheFile: function () {
-    rimraf( this._pathToFile, {glob: false} );
-    return !fs.existsSync( this._pathToFile );
+    return del( this._pathToFile );
   },
   /**
    * Destroy the file cache and cache content.
@@ -184,11 +183,7 @@ module.exports = {
    */
   clearCacheById: function ( docId, cacheDir ) {
     var filePath = cacheDir ? path.resolve( cacheDir, docId ) : path.resolve( __dirname, './.cache/', docId );
-    if ( !fs.existsSync( filePath ) ) {
-      return false;
-    }
-    rimraf( filePath, {glob: false} );
-    return true;
+    return del( filePath );
   },
   /**
    * Remove all cache stored in the cache directory
@@ -197,10 +192,6 @@ module.exports = {
    */
   clearAll: function ( cacheDir ) {
     var filePath = cacheDir ? path.resolve( cacheDir ) : path.resolve( __dirname, './.cache/' );
-    if ( !fs.existsSync( filePath ) ) {
-      return false;
-    }
-    rimraf( filePath, {glob: false} );
-    return true;
+    return del( filePath );
   }
 };
