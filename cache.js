@@ -125,8 +125,8 @@ var cache = {
    * @return {Boolean} true or false if the file was successfully deleted
    */
   removeCacheFile: function () {
-    rimraf( this._pathToFile );
-    return !fs.existsSync( this._pathToFile, {glob: false} );
+    rimraf( this._pathToFile, {glob: false} );
+    return !fs.existsSync( this._pathToFile );
   },
   /**
    * Destroy the file cache and cache content.
