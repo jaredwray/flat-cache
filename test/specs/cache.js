@@ -3,29 +3,21 @@ describe( 'flat-cache', function () {
   var expect = require( 'chai' ).expect;
   var readJSON = require( '../../utils.js' ).readJSON;
   var path = require( 'path' );
-  var del = require( 'del' ).sync;
+  var rimraf = require( 'rimraf' ).sync;
   var fs = require( 'fs' );
   var flatCache = require( '../../cache' );
   var write = require( 'write' );
 
   beforeEach( function () {
     flatCache.clearAll();
-    del( path.resolve( __dirname, '../fixtures/.cache/' ), {
-      force: true
-    } );
-    del( path.resolve( __dirname, '../fixtures/.cache2/' ), {
-      force: true
-    } );
+    rimraf( path.resolve( __dirname, '../fixtures/.cache/' ) );
+    rimraf( path.resolve( __dirname, '../fixtures/.cache2/' ) );
   } );
 
   afterEach( function () {
     flatCache.clearAll();
-    del( path.resolve( __dirname, '../fixtures/.cache/' ), {
-      force: true
-    } );
-    del( path.resolve( __dirname, '../fixtures/.cache2/' ), {
-      force: true
-    } );
+    rimraf( path.resolve( __dirname, '../fixtures/.cache/' ) );
+    rimraf( path.resolve( __dirname, '../fixtures/.cache2/' ) );
   } );
 
   it( 'should not crash if the cache file exists but it is an empty string', function () {
@@ -184,9 +176,7 @@ describe( 'flat-cache', function () {
   describe( 'loading a cache using a filePath directly', function () {
     var file = path.resolve( __dirname, '../fixtures/.cache2/mycache-file.cache' );
     beforeEach( function () {
-      del( file, {
-        force: true
-      } );
+      rimraf( file );
     } );
 
     it( 'should create the file if it does not exists before', function () {
