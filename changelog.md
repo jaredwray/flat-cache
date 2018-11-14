@@ -1,5 +1,10 @@
 
 # flat-cache - Changelog
+## v1.3.4
+- **Refactoring**
+  - Add del.js and utils.js to the list of files to be beautified - [9d0ca9b]( https://github.com/royriojas/flat-cache/commit/9d0ca9b ), [Roy Riojas](https://github.com/Roy Riojas), 14/11/2018 12:19:02
+
+    
 ## v1.3.3
 - **Refactoring**
   - Make sure package-lock.json is up to date - [a7d2598]( https://github.com/royriojas/flat-cache/commit/a7d2598 ), [Roy Riojas](https://github.com/Roy Riojas), 14/11/2018 11:36:08
