@@ -11,7 +11,8 @@
   "main": "cache.js",
   "files": [
     "cache.js",
-    "utils.js"
+    "utils.js",
+    "del.js"
   ],
   "engines": {
     "node": ">=0.10.0"
@@ -23,9 +24,9 @@
     "npm run verify --silent"
   ],
   "scripts": {
-    "beautify": "esbeautifier 'cache.js' 'test/specs/**/*.js'",
+    "beautify": "esbeautifier 'cache.js' 'utils.js' 'del.js' 'test/specs/**/*.js'",
     "beautify-check": "npm run beautify -- -k",
-    "eslint": "eslinter 'cache.js' 'utils.js' 'specs/**/*.js'",
+    "eslint": "eslinter 'cache.js' 'utils.js' 'del.js' 'specs/**/*.js'",
     "eslint-fix": "npm run eslint -- --fix",
     "autofix": "npm run beautify && npm run eslint-fix",
     "check": "npm run beautify-check && npm run eslint",
