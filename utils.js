@@ -1,6 +1,6 @@
 var fs = require( 'graceful-fs' );
 var write = require( 'write' );
-var circularJson = require( 'circular-json' );
+var circularJson = require( 'flatted' );
 
 module.exports = {
 
