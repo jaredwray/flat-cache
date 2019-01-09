@@ -1,6 +1,6 @@
 {
   "name": "flat-cache",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "A stupidly simple key/value storage using files to persist some data",
   "repository": "royriojas/flat-cache",
   "license": "MIT",
