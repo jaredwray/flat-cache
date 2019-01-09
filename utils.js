@@ -1,9 +1,8 @@
-var fs = require( 'graceful-fs' );
+var fs = require( 'fs' );
 var write = require( 'write' );
 var flatted = require( 'flatted' );
 
 module.exports = {
-
   tryParse: function ( filePath, defaultValue ) {
     var result;
     try {
@@ -22,7 +21,9 @@ module.exports = {
    * @returns {*} parse result
    */
   readJSON: function ( filePath ) {
-    return flatted.parse( fs.readFileSync( filePath ).toString() );
+    return flatted.parse( fs.readFileSync( filePath, {
+      encoding: 'utf8'
+    } ) );
   },
 
   /**
@@ -35,5 +36,4 @@ module.exports = {
   writeJSON: function ( filePath, data ) {
     write.sync( filePath, flatted.stringify( data ) );
   }
-
 };
