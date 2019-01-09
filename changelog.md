@@ -1,5 +1,10 @@
 
 # flat-cache - Changelog
+## v2.0.1
+- **Refactoring**
+  - upgrade node modules to latest versions - [6402ed3]( https://github.com/royriojas/flat-cache/commit/6402ed3 ), [Roy Riojas](https://github.com/Roy Riojas), 08/01/2019 21:47:05
+
+    
 ## v2.0.0
 - **Bug Fixes**
   - upgrade package.json lock file - [8d21c7b]( https://github.com/royriojas/flat-cache/commit/8d21c7b ), [Roy Riojas](https://github.com/Roy Riojas), 08/01/2019 20:03:13
