@@ -78,6 +78,9 @@ var cache = {
    */
   getKey: function ( key ) {
     this._visited[ key ] = true;
+    if(typeof this._persisted[ key ]=='undefined'){
+      this._persisted[ key ]=[]
+    }
     return this._persisted[ key ];
   },
 
