@@ -80,6 +80,17 @@ var cache = {
     this._visited[ key ] = true;
     return this._persisted[ key ];
   },
+  
+  getKeysByPattern: function ( filter ) {
+    let key, keys = []
+    for (key in this._persisted)
+      if (this._persisted.hasOwnProperty(key) && filter.test(key)) {
+        keys.push( key )
+        this._visited[ key ] = true;
+
+      }
+    return keys
+  }
 
   /**
    * Remove keys that were not accessed/set since the
