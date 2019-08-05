@@ -21,6 +21,8 @@ var cache = {
     me._persisted = { };
     me._pathToFile = cacheDir ? path.resolve( cacheDir, docId ) : path.resolve( __dirname, './.cache/', docId );
 
+    console.log ("Loaded:>>>>> ", me._pathToFile)
+
     if ( fs.existsSync( me._pathToFile ) ) {
       me._persisted = utils.tryParse( me._pathToFile, { } );
     }
@@ -80,18 +82,34 @@ var cache = {
     this._visited[ key ] = true;
     return this._persisted[ key ];
   },
-  
-  getKeysByPattern: function ( filter ) {
+
+  /**
+   * Return the keys and values set for the provided key pattern
+   * @method getKeysByPattern
+   * @param key {String} the pattern of the keys to retrieve
+   * @returns {key: value, ... } the keys and values from the key pattern
+   */
+  getKeysByPattern: function ( filter  ) {
     let key, keys = []
     for (key in this._persisted)
-      if (this._persisted.hasOwnProperty(key) && filter.test(key)) {
-        keys.push( key )
+      if (this._persisted.hasOwnProperty(key) && key.includes(filter)) {
+        keys.push( this._persisted[ key ] );
         this._visited[ key ] = true;
-
       }
+    console.log ( ">>>>>>>>>>>>>>>>>>>>>>>>>>>>File: ", this._pathToFile )
     return keys
-  }
+  },
 
+  getKeysOnlyByPattern: function ( filter  ) {
+    let key, keys = []
+    for (key in this._persisted)
+      if (this._persisted.hasOwnProperty(key) && key.includes(filter)) {
+        keys.push( key );
+        this._visited[ key ] = true;
+      }
+    console.log ( ">>>>>>>>>>>>>>>>>>>>>>>>>>>>File: ", this._pathToFile )
+    return keys
+  },
   /**
    * Remove keys that were not accessed/set since the
    * last time the `prune` method was called.
