@@ -86,13 +86,14 @@ var cache = {
    * @param filter {String} the search string of the keys to retrieve
    * @returns {values, ...} the values from the matched key set
    */
-  getKeysByMatch: function ( filter  ) {
-    let key, keys = []
-    for ( key in this._persisted )
+  getKeysByMatch: function ( filter ) {
+    let key,
+      keys = []
+    for (key in this._persisted)
       if ( this._persisted.hasOwnProperty( key ) && key.includes( filter ) ) {
         keys.push( this._persisted[ key ] );
         this._visited[ key ] = true;
-      }
+    }
     return keys
   },
   /**
@@ -101,16 +102,17 @@ var cache = {
    * @param filter {String} the search string of the keys to be retrieved
    * @returns {keys, ...} the key names from the matched key set
    */
-  getOnlyKeysByMatch: function ( filter  ) {
-    let key, keys = []
-    for ( key in this._persisted )
+  getOnlyKeysByMatch: function ( filter ) {
+    let key,
+      keys = []
+    for (key in this._persisted)
       if ( this._persisted.hasOwnProperty( key ) && key.includes( filter ) ) {
         keys.push( key );
         this._visited[ key ] = true;
-      }
+    }
     return keys
   },
-  
+
   /**
    * Remove keys that were not accessed/set since the
    * last time the `prune` method was called.
