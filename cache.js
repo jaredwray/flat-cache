@@ -88,13 +88,13 @@ var cache = {
    */
   getKeysByMatch: function ( filter ) {
     let key,
-      keys = []
-    for (key in this._persisted)
+      keys = [];
+    for (key in this._persisted) {
       if ( this._persisted.hasOwnProperty( key ) && key.includes( filter ) ) {
         keys.push( this._persisted[ key ] );
         this._visited[ key ] = true;
     }
-    return keys
+    return keys;
   },
   /**
    * Return the keys set for the matching keys
@@ -104,13 +104,13 @@ var cache = {
    */
   getOnlyKeysByMatch: function ( filter ) {
     let key,
-      keys = []
-    for (key in this._persisted)
+      keys = [];
+    for (key in this._persisted) {
       if ( this._persisted.hasOwnProperty( key ) && key.includes( filter ) ) {
         keys.push( key );
         this._visited[ key ] = true;
     }
-    return keys
+    return keys;
   },
 
   /**
