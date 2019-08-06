@@ -84,32 +84,37 @@ var cache = {
   },
 
   /**
-   * Return the keys and values set for the provided key pattern
-   * @method getKeysByPattern
-   * @param key {String} the pattern of the keys to retrieve
-   * @returns {key: value, ... } the keys and values from the key pattern
+   * Return the values set for the matching keys
+   * @method getKeysByMatch
+   * @param filter {String} the search string of the keys to retrieve
+   * @returns {values, ...} the values from the matched key set
    */
-  getKeysByPattern: function ( filter  ) {
+  getKeysByMatch: function ( filter  ) {
     let key, keys = []
     for (key in this._persisted)
       if (this._persisted.hasOwnProperty(key) && key.includes(filter)) {
         keys.push( this._persisted[ key ] );
         this._visited[ key ] = true;
       }
-    console.log ( ">>>>>>>>>>>>>>>>>>>>>>>>>>>>File: ", this._pathToFile )
     return keys
   },
-
-  getKeysOnlyByPattern: function ( filter  ) {
+  
+  /**
+   * Return the keys set for the matching keys
+   * @method getOnlyKeysByMatch
+   * @param filter {String} the search string of the keys to be retrieved
+   * @returns {keys, ...} the key names from the matched key set
+   */
+  getOnlyKeysByMatch: function ( filter  ) {
     let key, keys = []
     for (key in this._persisted)
       if (this._persisted.hasOwnProperty(key) && key.includes(filter)) {
         keys.push( key );
         this._visited[ key ] = true;
       }
-    console.log ( ">>>>>>>>>>>>>>>>>>>>>>>>>>>>File: ", this._pathToFile )
     return keys
   },
+  
   /**
    * Remove keys that were not accessed/set since the
    * last time the `prune` method was called.
