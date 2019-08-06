@@ -80,7 +80,6 @@ var cache = {
     this._visited[ key ] = true;
     return this._persisted[ key ];
   },
-
   /**
    * Return the values set for the matching keys
    * @method getKeysByMatch
@@ -89,14 +88,13 @@ var cache = {
    */
   getKeysByMatch: function ( filter  ) {
     let key, keys = []
-    for (key in this._persisted)
-      if (this._persisted.hasOwnProperty(key) && key.includes(filter)) {
+    for ( key in this._persisted )
+      if ( this._persisted.hasOwnProperty( key ) && key.includes( filter ) ) {
         keys.push( this._persisted[ key ] );
         this._visited[ key ] = true;
       }
     return keys
   },
-  
   /**
    * Return the keys set for the matching keys
    * @method getOnlyKeysByMatch
@@ -105,8 +103,8 @@ var cache = {
    */
   getOnlyKeysByMatch: function ( filter  ) {
     let key, keys = []
-    for (key in this._persisted)
-      if (this._persisted.hasOwnProperty(key) && key.includes(filter)) {
+    for ( key in this._persisted )
+      if ( this._persisted.hasOwnProperty( key ) && key.includes( filter ) ) {
         keys.push( key );
         this._visited[ key ] = true;
       }
