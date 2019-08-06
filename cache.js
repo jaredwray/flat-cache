@@ -21,8 +21,6 @@ var cache = {
     me._persisted = { };
     me._pathToFile = cacheDir ? path.resolve( cacheDir, docId ) : path.resolve( __dirname, './.cache/', docId );
 
-    console.log ("Loaded:>>>>> ", me._pathToFile)
-
     if ( fs.existsSync( me._pathToFile ) ) {
       me._persisted = utils.tryParse( me._pathToFile, { } );
     }
