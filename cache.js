@@ -93,6 +93,8 @@ var cache = {
       if ( this._persisted.hasOwnProperty( key ) && key.includes( filter ) ) {
         keys.push( this._persisted[ key ] );
         this._visited[ key ] = true;
+
+      }
     }
     return keys;
   },
@@ -109,6 +111,7 @@ var cache = {
       if ( this._persisted.hasOwnProperty( key ) && key.includes( filter ) ) {
         keys.push( key );
         this._visited[ key ] = true;
+      }
     }
     return keys;
   },
