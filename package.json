@@ -81,7 +81,7 @@
   },
   "dependencies": {
     "flatted": "^2.0.0",
-    "rimraf": "2.6.3",
-    "write": "1.0.3"
+    "rimraf": "^2.6.3",
+    "write": "^1.0.3"
   }
 }
