@@ -86,7 +86,7 @@ var cache = {
    * @param filter {String} the search string of the keys to retrieve
    * @returns {values, ...} the values from the matched key set
    */
-  getKeysByMatch: function ( filter ) {
+  getKeyValuesByMatch: function ( filter ) {
     let key,
       keys = [];
     for (key in this._persisted) {
