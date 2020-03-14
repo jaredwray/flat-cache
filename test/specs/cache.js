@@ -1,12 +1,12 @@
+var expect = require( 'chai' ).expect;
+var readJSON = require( '../../utils.js' ).readJSON;
+var path = require( 'path' );
+var rimraf = require( 'rimraf' ).sync;
+var fs = require( 'fs' );
+var flatCache = require( '../../cache' );
+var write = require( 'write' );
 describe( 'flat-cache', function () {
   'use strict';
-  var expect = require( 'chai' ).expect;
-  var readJSON = require( '../../utils.js' ).readJSON;
-  var path = require( 'path' );
-  var rimraf = require( 'rimraf' ).sync;
-  var fs = require( 'fs' );
-  var flatCache = require( '../../cache' );
-  var write = require( 'write' );
 
   beforeEach( function () {
     flatCache.clearAll();
@@ -174,8 +174,9 @@ describe( 'flat-cache', function () {
   } );
 
   describe( 'loading a cache using a filePath directly', function () {
-    var file = path.resolve( __dirname, '../fixtures/.cache2/mycache-file.cache' );
+    var file;
     beforeEach( function () {
+      file = path.resolve( __dirname, '../fixtures/.cache2/mycache-file.cache' );
       rimraf( file );
     } );
 
