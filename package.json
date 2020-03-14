@@ -76,8 +76,8 @@
     "precommit": "^1.2.2",
     "prepush": "^3.1.11",
     "proxyquire": "^1.8.0",
-    "sinon": "^1.17.7",
-    "sinon-chai": "^2.14.0",
+    "sinon": "^9.0.1",
+    "sinon-chai": "^3.5.0",
     "watch-run": "^1.2.5"
   },
   "dependencies": {
