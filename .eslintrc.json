@@ -1,7 +1,8 @@
 {
     "extends": [
         "eslint:recommended",
-        "plugin:mocha/recommended"
+        "plugin:mocha/recommended",
+        "plugin:prettier/recommended"
     ],
     "parserOptions": {
         "ecmaVersion": 2018,
@@ -14,5 +15,15 @@
     },
     "plugins": [
         "mocha"
-    ]
+    ],
+    "rules": {
+        "prettier/prettier": [
+            "error", {
+                "singleQuote": true,
+                "trailingComma": "es5",
+                "printWidth": 120,
+                "arrowParens": "avoid"
+            }
+        ]
+    }
 }
