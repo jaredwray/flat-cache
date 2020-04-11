@@ -15,7 +15,7 @@
     "del.js"
   ],
   "engines": {
-    "node": ">=4"
+    "node": ">=10"
   },
   "precommit": [
     "npm run verify --silent"
