@@ -171,6 +171,16 @@ describe( 'flat-cache', function () {
       expect( fs.existsSync( path.resolve( __dirname, '../fixtures/.cache2/someId' ) ) ).to.be.false;
     } );
 
+    it( 'should remove the cache directory from disk using flatCache.clearAll', function () {
+      var cache1 = flatCache.load( 'someId', path.resolve( __dirname, '../fixtures/.cache2' ) );
+      var cache2 = flatCache.load( 'someOtherId', path.resolve( __dirname, '../fixtures/.cache2' ) );
+      cache1.save();
+      cache2.save();
+      expect( fs.existsSync( path.resolve( __dirname, '../fixtures/.cache2/someId' ) ) ).to.be.true;
+      expect( fs.existsSync( path.resolve( __dirname, '../fixtures/.cache2/someOtherId' ) ) ).to.be.true;
+      flatCache.clearAll( path.resolve( __dirname, '../fixtures/.cache2' ) )
+      expect( fs.existsSync( path.resolve( __dirname, '../fixtures/.cache2' ) ) ).to.be.false;
+    } );
   } );
 
   describe( 'loading a cache using a filePath directly', function () {
