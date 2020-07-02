@@ -1,5 +1,5 @@
 var fs = require( 'fs' );
-var write = require( 'write' );
+var path = require( 'path' );
 var flatted = require( 'flatted' );
 
 module.exports = {
@@ -34,6 +34,9 @@ module.exports = {
    * @param  {*} data Object to serialize
    */
   writeJSON: function ( filePath, data ) {
-    write.sync( filePath, flatted.stringify( data ) );
+    fs.mkdirSync( path.dirname( filePath ), {
+      recursive: true
+    } );
+    fs.writeFileSync( filePath, flatted.stringify( data ) );
   }
 };
