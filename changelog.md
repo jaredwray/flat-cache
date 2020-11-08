@@ -1,5 +1,10 @@
 
 # flat-cache - Changelog
+## v3.0.1
+- **Refactoring**
+  - Remove unused deps - [8c6d9dc]( https://github.com/royriojas/flat-cache/commit/8c6d9dc ), [Roy Riojas](https://github.com/Roy Riojas), 08/11/2020 01:43:29
+
+    
 ## v3.0.0
 - **Refactoring**
   - Fix engines - [52b824c]( https://github.com/royriojas/flat-cache/commit/52b824c ), [Roy Riojas](https://github.com/Roy Riojas), 08/11/2020 01:01:52
