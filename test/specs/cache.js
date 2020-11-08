@@ -6,7 +6,6 @@ describe( 'flat-cache', function () {
   var rimraf = require( 'rimraf' ).sync;
   var fs = require( 'fs' );
   var flatCache = require( '../../cache' );
-  var write = require( 'write' );
 
   beforeEach( function () {
     flatCache.clearAll();
@@ -22,7 +21,10 @@ describe( 'flat-cache', function () {
 
   it( 'should not crash if the cache file exists but it is an empty string', function () {
     var cachePath = path.resolve( __dirname, '../fixtures/.cache2' );
-    write.sync( path.join( cachePath, 'someId' ), '' );
+    fs.mkdirSync( cachePath, {
+      recursive: true
+    } );
+    fs.writeFileSync( path.join( cachePath, 'someId' ), '' );
 
     expect( function () {
       var cache = flatCache.load( 'someId', cachePath );
@@ -32,7 +34,10 @@ describe( 'flat-cache', function () {
 
   it( 'should not crash if the cache file exists but it is an invalid JSON string', function () {
     var cachePath = path.resolve( __dirname, '../fixtures/.cache2' );
-    write.sync( path.join( cachePath, 'someId' ), '{ "foo": "fookey", "bar" ' );
+    fs.mkdirSync( cachePath, {
+      recursive: true
+    } );
+    fs.writeFileSync( path.join( cachePath, 'someId' ), '{ "foo": "fookey", "bar" ' );
 
     expect( function () {
       var cache = flatCache.load( 'someId', cachePath );
