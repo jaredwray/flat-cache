@@ -1,5 +1,10 @@
 
 # flat-cache - Changelog
+## v3.0.3
+- **Bug Fixes**
+  - Fix wrong eslint command - [f268e42]( https://github.com/royriojas/flat-cache/commit/f268e42 ), [Roy Riojas](https://github.com/Roy Riojas), 08/11/2020 02:15:04
+
+    
 ## v3.0.2
 - **Refactoring**
   - Update the files paths - [6983a80]( https://github.com/royriojas/flat-cache/commit/6983a80 ), [Roy Riojas](https://github.com/Roy Riojas), 08/11/2020 01:58:39
