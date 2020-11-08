@@ -1,5 +1,16 @@
 
 # flat-cache - Changelog
+## v3.0.2
+- **Refactoring**
+  - Update the files paths - [6983a80]( https://github.com/royriojas/flat-cache/commit/6983a80 ), [Roy Riojas](https://github.com/Roy Riojas), 08/11/2020 01:58:39
+
+    
+  - Move code to src/ - [18ed6e8]( https://github.com/royriojas/flat-cache/commit/18ed6e8 ), [Roy Riojas](https://github.com/Roy Riojas), 08/11/2020 01:57:17
+
+    
+  - Change eslint-cache location - [beed74c]( https://github.com/royriojas/flat-cache/commit/beed74c ), [Roy Riojas](https://github.com/Roy Riojas), 08/11/2020 01:48:32
+
+    
 ## v3.0.1
 - **Refactoring**
   - Remove unused deps - [8c6d9dc]( https://github.com/royriojas/flat-cache/commit/8c6d9dc ), [Roy Riojas](https://github.com/Roy Riojas), 08/11/2020 01:43:29
