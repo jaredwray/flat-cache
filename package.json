@@ -8,11 +8,9 @@
     "name": "Roy Riojas",
     "url": "http://royriojas.com"
   },
-  "main": "cache.js",
+  "main": "src/cache.js",
   "files": [
-    "cache.js",
-    "utils.js",
-    "del.js"
+    "./src/"
   ],
   "engines": {
     "node": "^10.12.0 || >=12.0.0"
