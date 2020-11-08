@@ -19,7 +19,7 @@ var cache = {
 
     me._visited = {};
     me._persisted = {};
-    me._pathToFile = cacheDir ? path.resolve(cacheDir, docId) : path.resolve(__dirname, './.cache/', docId);
+    me._pathToFile = cacheDir ? path.resolve(cacheDir, docId) : path.resolve(__dirname, '../.cache/', docId);
 
     if (fs.existsSync(me._pathToFile)) {
       me._persisted = utils.tryParse(me._pathToFile, {});
@@ -182,7 +182,7 @@ module.exports = {
    * @returns {Boolean} true if the cache folder was deleted. False otherwise
    */
   clearCacheById: function (docId, cacheDir) {
-    var filePath = cacheDir ? path.resolve(cacheDir, docId) : path.resolve(__dirname, './.cache/', docId);
+    var filePath = cacheDir ? path.resolve(cacheDir, docId) : path.resolve(__dirname, '../.cache/', docId);
     return del(filePath);
   },
   /**
@@ -191,7 +191,7 @@ module.exports = {
    * @returns {Boolean} true if the cache folder was deleted. False otherwise
    */
   clearAll: function (cacheDir) {
-    var filePath = cacheDir ? path.resolve(cacheDir) : path.resolve(__dirname, './.cache/');
+    var filePath = cacheDir ? path.resolve(cacheDir) : path.resolve(__dirname, '../.cache/');
     return del(filePath);
   },
 };

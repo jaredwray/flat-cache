@@ -1,13 +1,12 @@
 var expect = require('chai').expect;
-var readJSON = require('../../utils.js').readJSON;
+var readJSON = require('../../src/utils').readJSON;
 var path = require('path');
 var rimraf = require('rimraf').sync;
 var fs = require('fs');
-var flatCache = require('../../cache');
+var flatCache = require('../../src/cache');
 var write = require('write');
-describe('flat-cache', function () {
-  'use strict';
 
+describe('flat-cache', function () {
   beforeEach(function () {
     flatCache.clearAll();
     rimraf(path.resolve(__dirname, '../fixtures/.cache/'));
