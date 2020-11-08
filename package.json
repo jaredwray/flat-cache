@@ -24,7 +24,7 @@
     "npm run verify --silent"
   ],
   "scripts": {
-    "eslint": "eslint --cache --ext .js .",
+    "eslint": "eslint --cache --cache-location=node_modules/.cache/ --ext .js .",
     "eslint-fix": "npm run eslint -- --fix",
     "autofix": "npm run eslint-fix",
     "check": "npm run eslint",
