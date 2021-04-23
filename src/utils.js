@@ -36,9 +36,12 @@ module.exports = {
    * @param  {*} data Object to serialize
    */
   writeJSON: function (filePath, data) {
-    fs.mkdirSync(path.dirname(filePath), {
-      recursive: true,
-    });
+    try {
+      fs.mkdirSync(path.dirname(filePath), {
+        recursive: true,
+      });
+    } catch (error) {}
+
     fs.writeFileSync(filePath, flatted.stringify(data));
   },
 };
