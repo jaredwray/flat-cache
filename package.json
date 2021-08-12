@@ -63,22 +63,22 @@
     "projectName": "flat-cache"
   },
   "devDependencies": {
-    "chai": "^4.2.0",
+    "chai": "^4.3.4",
     "changelogx": "^5.0.6",
-    "eslint": "^7.13.0",
-    "eslint-config-prettier": "^6.15.0",
-    "eslint-plugin-mocha": "^8.0.0",
-    "eslint-plugin-prettier": "^3.1.4",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-mocha": "^9.0.0",
+    "eslint-plugin-prettier": "^3.4.0",
     "glob-expand": "^0.2.1",
     "istanbul": "^0.4.5",
-    "mocha": "^8.2.1",
+    "mocha": "^9.0.3",
     "precommit": "^1.2.2",
     "prepush": "^3.1.11",
-    "prettier": "^2.1.2",
+    "prettier": "^2.3.2",
     "watch-run": "^1.2.5"
   },
   "dependencies": {
-    "flatted": "^3.1.0",
+    "flatted": "^3.2.2",
     "rimraf": "^3.0.2"
   }
 }
