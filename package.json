@@ -37,7 +37,7 @@
     "bump-major": "npm run pre-v && npm version major -m 'BLD: Release v%s' && npm run post-v",
     "bump-minor": "npm run pre-v && npm version minor -m 'BLD: Release v%s' && npm run post-v",
     "bump-patch": "npm run pre-v && npm version patch -m 'BLD: Release v%s' && npm run post-v",
-    "test:cache": "mocha -R spec test/specs",
+    "test:cache": "c8 mocha -R spec test/specs",
     "test": "npm run verify --silent",
     "cover": "istanbul cover test/runner.js html text-summary",
     "watch": "watch-run -i -p 'test/specs/**/*.js' istanbul cover test/runner.js html text-summary"
@@ -63,6 +63,7 @@
     "projectName": "flat-cache"
   },
   "devDependencies": {
+    "c8": "^8.0.1",
     "chai": "^4.2.0",
     "changelogx": "^5.0.6",
     "eslint": "^7.13.0",
