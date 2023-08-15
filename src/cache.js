@@ -55,8 +55,8 @@ class Cache {
   /**
    * sets a key to a given value
    * @method setKey
-   * @param key {string} the key to set
-   * @param value {object} the value of the key. Could be any object that can be serialized with JSON.stringify
+   * @param {string} key the key to set
+   * @param {object} value the value of the key. Could be any object that can be serialized with JSON.stringify
    */
   setKey(key, value) {
     this._visited[key] = true;
@@ -66,7 +66,7 @@ class Cache {
   /**
    * remove a given key from the cache
    * @method removeKey
-   * @param key {String} the key to remove from the object
+   * @param {String} key the key to remove from the object
    */
   removeKey(key) {
     delete this._visited[key]; // esfmt-ignore-line
@@ -112,10 +112,10 @@ class Cache {
   /**
    * Save the state of the cache identified by the docId to disk
    * as a JSON structure
-   * @param [noPrune=false] {Boolean} whether to remove from cache the non visited files
+   * @param {Boolean} [noPrune=false] whether to remove from cache the non visited files
    * @method save
    */
-  save(noPrune) {
+  save(noPrune = false) {
     var me = this;
 
     !noPrune && me._prune();
