@@ -79,7 +79,7 @@
     "watch-run": "^1.2.5"
   },
   "dependencies": {
-    "flatted": "^3.1.0",
+    "flatted": "^3.2.7",
     "rimraf": "^3.0.2"
   }
 }
