@@ -11,8 +11,8 @@ class Cache {
    * then the cache module directory `./cache` will be used instead
    *
    * @method load
-   * @param {String} docId the id of the cache, would also be used as the name of the file cache
-   * @param {String} [cacheDir] directory for the cache entry
+   * @param {String} docId - The id of the cache, would also be used as the name of the file cache
+   * @param {String} [cacheDir] - Directory for the cache entry
    */
   load(docId, cacheDir) {
     var me = this;
@@ -29,7 +29,7 @@ class Cache {
   /**
    * Load the cache from the provided file
    * @method loadFile
-   * @param  {String} pathToFile the path to the file containing the info for the cache
+   * @param  {String} pathToFile - The path to the file containing the info for the cache
    */
   loadFile(pathToFile) {
     var me = this;
@@ -55,8 +55,8 @@ class Cache {
   /**
    * sets a key to a given value
    * @method setKey
-   * @param {string} key the key to set
-   * @param {object} value the value of the key. Could be any object that can be serialized with JSON.stringify
+   * @param {string} key - The key to set
+   * @param {object} value - The value of the key. Could be any object that can be serialized with JSON.stringify
    */
   setKey(key, value) {
     this._visited[key] = true;
@@ -66,7 +66,7 @@ class Cache {
   /**
    * remove a given key from the cache
    * @method removeKey
-   * @param {String} key the key to remove from the object
+   * @param {String} - Key the key to remove from the object
    */
   removeKey(key) {
     delete this._visited[key]; // esfmt-ignore-line
@@ -76,8 +76,8 @@ class Cache {
   /**
    * Return the value of the provided key
    * @method getKey
-   * @param key {String} the name of the key to retrieve
-   * @returns {*} the value from the key
+   * @param {String} - Key the name of the key to retrieve
+   * @returns {*} - The value from the key
    */
   getKey(key) {
     this._visited[key] = true;
@@ -112,7 +112,7 @@ class Cache {
   /**
    * Save the state of the cache identified by the docId to disk
    * as a JSON structure
-   * @param {Boolean} [noPrune=false] whether to remove from cache the non visited files
+   * @param {Boolean} [noPrune=false] - Whether to remove from cache the non visited files
    * @method save
    */
   save(noPrune = false) {
@@ -125,7 +125,7 @@ class Cache {
   /**
    * remove the file where the cache is persisted
    * @method removeCacheFile
-   * @return {Boolean} true or false if the file was successfully deleted
+   * @return {Boolean} - True or false if the file was successfully deleted
    */
   removeCacheFile() {
     return del(this._pathToFile);
@@ -149,9 +149,9 @@ module.exports = {
    * Alias for create. Should be considered depreacted. Will be removed in next releases
    *
    * @method load
-   * @param docId {String} the id of the cache, would also be used as the name of the file cache
-   * @param [cacheDir] {String} directory for the cache entry
-   * @returns {Cache} cache instance
+   * @param {String} docId - The id of the cache, would also be used as the name of the file cache
+   * @param {String} [cacheDir] - Directory for the cache entry
+   * @returns {Cache} - cache instance
    */
   load: function (docId, cacheDir) {
     return this.create(docId, cacheDir);
@@ -162,9 +162,9 @@ module.exports = {
    * cache storage.
    *
    * @method create
-   * @param docId {String} the id of the cache, would also be used as the name of the file cache
-   * @param [cacheDir] {String} directory for the cache entry
-   * @returns {Cache} cache instance
+   * @param {String} docId - The id of the cache, would also be used as the name of the file cache
+   * @param {String} [cacheDir] - Directory for the cache entry
+   * @returns {Cache} - cache instance
    */
   create: function (docId, cacheDir) {
     var obj = new Cache();
@@ -177,22 +177,24 @@ module.exports = {
     obj.loadFile(filePath);
     return obj;
   },
+  
   /**
    * Clear the cache identified by the given id. Caches stored in a different cache directory can be deleted directly
    *
    * @method clearCache
-   * @param docId {String} the id of the cache, would also be used as the name of the file cache
-   * @param cacheDir {String} the directory where the cache file was written
-   * @returns {Boolean} true if the cache folder was deleted. False otherwise
+   * @param {String} docId - The id of the cache, would also be used as the name of the file cache
+   * @param {String} cacheDir - The directory where the cache file was written
+   * @returns {Boolean} - True if the cache folder was deleted. False otherwise
    */
   clearCacheById: function (docId, cacheDir) {
     var filePath = cacheDir ? path.resolve(cacheDir, docId) : path.resolve(__dirname, '../.cache/', docId);
     return del(filePath);
   },
+  
   /**
    * Remove all cache stored in the cache directory
    * @method clearAll
-   * @returns {Boolean} true if the cache folder was deleted. False otherwise
+   * @returns {Boolean} - True if the cache folder was deleted. False otherwise
    */
   clearAll: function (cacheDir) {
     var filePath = cacheDir ? path.resolve(cacheDir) : path.resolve(__dirname, '../.cache/');
