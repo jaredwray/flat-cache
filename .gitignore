@@ -93,3 +93,7 @@ test/fixtures/
 .cache
 .cache2
 
+# NPM 
+package-lock.json
+
+
