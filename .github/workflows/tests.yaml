@@ -3,6 +3,8 @@ name: tests
 on:
   push:
     branches: [ master ]
+  pull_request:
+    branches: [ master ]
 
 jobs:
   build:
@@ -11,7 +13,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: ['12']
+        node-version: ['12', '14', '16']
 
     steps:
     - uses: actions/checkout@v3
