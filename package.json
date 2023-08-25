@@ -38,6 +38,7 @@
     "bump-minor": "npm run pre-v && npm version minor -m 'BLD: Release v%s' && npm run post-v",
     "bump-patch": "npm run pre-v && npm version patch -m 'BLD: Release v%s' && npm run post-v",
     "test:cache": "c8 mocha -R spec test/specs",
+    "test:ci:cache": "c8 --reporter=lcov mocha -R spec test/specs",
     "test": "npm run verify --silent",
     "cover": "istanbul cover test/runner.js html text-summary",
     "watch": "watch-run -i -p 'test/specs/**/*.js' istanbul cover test/runner.js html text-summary"
