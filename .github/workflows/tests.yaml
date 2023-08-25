@@ -26,6 +26,9 @@ jobs:
     - name: Testing    
       run: npm run test
 
+    - name: Run Codecov    
+      run: npm run test:ci:cache
+
     - name: Run Codecov
       uses: codecov/codecov-action@v3
       with:
