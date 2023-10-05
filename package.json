@@ -43,7 +43,7 @@
   ],
   "devDependencies": {
     "c8": "^8.0.1",
-    "chai": "^4.3.7",
+    "chai": "^4.3.10",
     "eslint": "^7.13.0",
     "eslint-config-prettier": "^6.15.0",
     "eslint-plugin-mocha": "^8.0.0",
