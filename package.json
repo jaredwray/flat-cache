@@ -54,7 +54,7 @@
     "write": "^2.0.0"
   },
   "dependencies": {
-    "flatted": "^3.2.7",
+    "flatted": "^3.2.9",
     "keyv": "^4.5.3",
     "rimraf": "^3.0.2"
   }
