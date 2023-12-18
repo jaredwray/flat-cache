@@ -15,7 +15,7 @@
     "src/utils.js"
   ],
   "engines": {
-    "node": "^10.12.0 || >=12.0.0"
+    "node": ">=16"
   },
   "precommit": [
     "npm run verify --silent"
@@ -56,6 +56,6 @@
   "dependencies": {
     "flatted": "^3.2.9",
     "keyv": "^4.5.3",
-    "rimraf": "^3.0.2"
+    "rimraf": "^5.0.5"
   }
 }
