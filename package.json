@@ -25,6 +25,7 @@
   ],
   "scripts": {
     "eslint": "eslint --cache --cache-location=node_modules/.cache/ ./src/**/*.js ./test/**/*.js",
+    "clean": "rimraf ./node_modules ./package-lock.json ./yarn.lock ./coverage",
     "eslint-fix": "npm run eslint -- --fix",
     "autofix": "npm run eslint-fix",
     "check": "npm run eslint",
