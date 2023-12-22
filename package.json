@@ -52,11 +52,12 @@
     "glob-expand": "^0.2.1",
     "mocha": "^10.2.0",
     "prettier": "^3.1.1",
+    "rimraf": "^5.0.5",
+    "sinon": "^17.0.1",
     "write": "^2.0.0"
   },
   "dependencies": {
     "flatted": "^3.2.9",
-    "keyv": "^4.5.4",
-    "rimraf": "^5.0.5"
+    "keyv": "^4.5.4"
   }
 }
