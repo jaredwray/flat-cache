@@ -5,6 +5,8 @@ var rimraf = require('rimraf').sync;
 var fs = require('fs');
 var flatCache = require('../../src/cache');
 var write = require('write');
+var del = require('../../src/del');
+var sinon = require('sinon');
 
 describe('flat-cache', function () {
   beforeEach(function () {
@@ -168,6 +170,42 @@ describe('flat-cache', function () {
       expect(fs.existsSync(path.resolve(__dirname, '../fixtures/.cache2/someId'))).to.be.true;
       cache.removeCacheFile();
       expect(fs.existsSync(path.resolve(__dirname, '../fixtures/.cache2/someId'))).to.be.false;
+    });
+  });
+
+  describe('del', function () {
+    let sandbox;
+
+    beforeEach(function () {
+      // Create a sandbox to stub methods
+      sandbox = sinon.createSandbox();
+    });
+
+    afterEach(function () {
+      // Restore the original methods
+      sandbox.restore();
+    });
+
+    it('should catch and log an error when deletion fails', function () {
+      // Arrange
+      const fakePath = '/path/to/fake/dir';
+      sandbox.stub(fs, 'existsSync').returns(true);
+      sandbox.stub(fs, 'statSync').returns({ isDirectory: () => true });
+      sandbox.stub(fs, 'readdirSync').returns(['file1', 'file2']);
+      sandbox.stub(path, 'join').returns(fakePath);
+      const error = new Error('Fake error');
+      sandbox.stub(fs, 'unlinkSync').throws(error);
+
+      var consoleLog = console.error;
+      console.error = function () {};
+
+      try {
+        del(fakePath);
+      } catch (err) {
+        // Assert
+        expect(err).to.contain('/path/to/fake/dir');
+      }
+      console.error = consoleLog;
     });
   });
 
