@@ -32,7 +32,8 @@
     "verify": "npm run eslint && npm run test:cache",
     "test:cache": "c8 mocha -R spec test/specs",
     "test:ci:cache": "c8 --reporter=lcov mocha -R spec test/specs",
-    "test": "npm run verify --silent"
+    "test": "npm run verify --silent",
+    "format": "prettier --write ."
   },
   "keywords": [
     "json cache",
@@ -48,7 +49,6 @@
     "eslint": "^8.56.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-mocha": "^10.2.0",
-    "eslint-plugin-prettier": "^5.0.1",
     "glob-expand": "^0.2.1",
     "mocha": "^10.2.0",
     "prettier": "^3.1.1",
