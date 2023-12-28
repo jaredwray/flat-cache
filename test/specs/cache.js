@@ -1,12 +1,12 @@
-var expect = require('chai').expect;
-var readJSON = require('../../src/utils').readJSON;
-var path = require('path');
-var rimraf = require('rimraf').sync;
-var fs = require('fs');
-var flatCache = require('../../src/cache');
-var write = require('write');
-var del = require('../../src/del');
-var sinon = require('sinon');
+const { expect } = require('chai');
+const { readJSON } = require('../../src/utils');
+const path = require('path');
+const { sync: rimraf } = require('rimraf');
+const fs = require('fs');
+const flatCache = require('../../src/cache');
+const write = require('write');
+const { del } = require('../../src/del');
+const sinon = require('sinon');
 
 describe('flat-cache', function () {
   beforeEach(function () {

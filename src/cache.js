@@ -1,9 +1,8 @@
 const path = require('path');
 const fs = require('fs');
 const Keyv = require('keyv');
-const utils = require('./utils');
-const del = require('./del');
-const writeJSON = utils.writeJSON;
+const { writeJSON, tryParse } = require('./utils');
+const { del } = require('./del');
 
 const cache = {
   /**
@@ -25,7 +24,7 @@ const cache = {
     me._pathToFile = cacheDir ? path.resolve(cacheDir, docId) : path.resolve(__dirname, '../.cache/', docId);
 
     if (fs.existsSync(me._pathToFile)) {
-      me._persisted = utils.tryParse(me._pathToFile, {});
+      me._persisted = tryParse(me._pathToFile, {});
     }
   },
 
