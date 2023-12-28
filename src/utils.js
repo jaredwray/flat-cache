@@ -1,10 +1,10 @@
-var fs = require('fs');
-var path = require('path');
-var flatted = require('flatted');
+const fs = require('fs');
+const path = require('path');
+const flatted = require('flatted');
 
 module.exports = {
   tryParse: function (filePath, defaultValue) {
-    var result;
+    let result;
     try {
       result = this.readJSON(filePath);
     } catch (ex) {
