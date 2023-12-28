@@ -1,4 +1,5 @@
 # flat-cache
+
 > A stupidly simple key/value storage using files to persist the data
 
 [![NPM Version](https://img.shields.io/npm/v/flat-cache.svg?style=flat)](https://npmjs.org/package/flat-cache)
@@ -15,7 +16,7 @@ npm i --save flat-cache
 ## Usage
 
 ```js
-var flatCache = require('flat-cache')
+var flatCache = require('flat-cache');
 // loads the cache, if one does not exists for the given
 // Id a new one will be prepared to be created
 var cache = flatCache.load('cacheId');
@@ -24,10 +25,10 @@ var cache = flatCache.load('cacheId');
 cache.setKey('key', { foo: 'var' });
 
 // get a key from the cache
-cache.getKey('key') // { foo: 'var' }
+cache.getKey('key'); // { foo: 'var' }
 
 // fetch the entire persisted object
-cache.all() // { 'key': { foo: 'var' } }
+cache.all(); // { 'key': { foo: 'var' } }
 
 // remove a key
 cache.removeKey('key'); // removes a key from the cache
@@ -42,7 +43,7 @@ var cache = flatCache.load('cacheId', path.resolve('./path/to/folder'));
 
 // The following methods are useful to clear the cache
 // delete a given cache
-flatCache.clearCacheById('cacheId') // removes the cacheId document if one exists.
+flatCache.clearCacheById('cacheId'); // removes the cacheId document if one exists.
 
 // delete all cache
 flatCache.clearAll(); // remove the cache directory
@@ -56,6 +57,7 @@ To make that possible we need to store the `fileSize` and `modificationTime` of 
 storage was needed and Bam! this module was born.
 
 ## Important notes
+
 - If no directory is especified when the `load` method is called, a folder named `.cache` will be created
   inside the module directory when `cache.save` is called. If you're committing your `node_modules` to any vcs, you
   might want to ignore the default `.cache` folder, or specify a custom directory.
