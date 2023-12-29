@@ -1,7 +1,7 @@
-var fs = require('fs');
-var path = require('path');
+const fs = require('fs');
+const path = require('path');
 
-module.exports = function del(targetPath) {
+function del(targetPath) {
   if (!fs.existsSync(targetPath)) {
     return false;
   }
@@ -25,4 +25,6 @@ module.exports = function del(targetPath) {
   } catch (error) {
     console.error(`Error while deleting ${targetPath}: ${error.message}`);
   }
-};
+}
+
+module.exports = { del };
