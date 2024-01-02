@@ -72,10 +72,7 @@ describe('flat-cache', function () {
     cache.save();
 
     cache.removeKey('some-key');
-    expect(
-      readJSON(path.resolve(__dirname, '../.cache/someId'))['some-key'],
-      'value is still in the persisted storage'
-    ).toStrictEqual(data);
+    expect(readJSON(path.resolve(__dirname, '../.cache/someId'))['some-key']).toStrictEqual(data);
 
     cache.save();
     expect(readJSON(path.resolve(__dirname, '../.cache/someId'))['some-key']).toBeUndefined();
