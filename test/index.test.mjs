@@ -1,12 +1,12 @@
 import { describe, test, expect, beforeEach, afterEach, vi } from 'vitest';
 
-const { readJSON } = require('../src/utils');
-const path = require('path');
-const { sync: rimraf } = require('rimraf');
-const fs = require('fs');
-const flatCache = require('../src/cache');
-const write = require('write');
-const { del } = require('../src/del');
+import { readJSON } from '../src/utils';
+import path from 'path';
+import { sync as rimraf } from 'rimraf';
+import fs from 'fs';
+import flatCache from '../src/cache';
+import write from 'write';
+import { del } from '../src/del';
 
 describe('flat-cache', function () {
   beforeEach(function () {

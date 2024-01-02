@@ -24,17 +24,11 @@
     "npm run verify --silent"
   ],
   "scripts": {
-    "eslint": "eslint --cache --cache-location=node_modules/.cache/ ./src/**/*.js ./test/**/*.js",
-    "clean": "rimraf ./node_modules ./package-lock.json ./yarn.lock ./coverage",
-    "eslint-fix": "npm run eslint -- --fix",
-    "autofix": "npm run eslint-fix",
-    "check": "npm run eslint",
-    "verify": "npm run eslint && npm run test:cache",
-    "test:cache": "c8 mocha -R spec test/specs",
-    "test:ci:cache": "c8 --reporter=lcov mocha -R spec test/specs",
-    "test": "npm run verify --silent",
-    "format": "prettier --write .",
-    "vitest": "vitest"
+    "lint": "eslint .",
+    "clean": "rimraf ./node_modules ./package-lock.json ./coverage",
+    "verify": "npm run eslint && npm run test",
+    "test": "vitest --coverage",
+    "format": "prettier --write ."
   },
   "keywords": [
     "json cache",
@@ -45,6 +39,7 @@
     "cache"
   ],
   "devDependencies": {
+    "@vitest/coverage-v8": "^1.1.1",
     "eslint": "^8.56.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-vitest": "^0.3.20",
