@@ -26,7 +26,7 @@
   "scripts": {
     "lint": "eslint .",
     "clean": "rimraf ./node_modules ./package-lock.json ./coverage",
-    "verify": "npm run eslint && npm run test",
+    "verify": "npm run lint && npm run test",
     "test": "vitest --coverage",
     "format": "prettier --write ."
   },
