@@ -1,12 +1,12 @@
 {
-  "extends": ["eslint:recommended", "prettier"],
+  "extends": ["eslint:recommended", "plugin:vitest/recommended", "prettier"],
+  "plugins": ["vitest"],
   "parserOptions": {
     "ecmaVersion": 2018,
     "sourceType": "module"
   },
   "env": {
     "node": true,
-    "es6": true,
-    "mocha": true
+    "es6": true
   }
 }
