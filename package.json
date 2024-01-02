@@ -33,7 +33,8 @@
     "test:cache": "c8 mocha -R spec test/specs",
     "test:ci:cache": "c8 --reporter=lcov mocha -R spec test/specs",
     "test": "npm run verify --silent",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "vitest": "vitest"
   },
   "keywords": [
     "json cache",
@@ -44,16 +45,11 @@
     "cache"
   ],
   "devDependencies": {
-    "c8": "^8.0.1",
-    "chai": "^4.3.10",
     "eslint": "^8.56.0",
     "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-mocha": "^10.2.0",
-    "glob-expand": "^0.2.1",
-    "mocha": "^10.2.0",
     "prettier": "^3.1.1",
     "rimraf": "^5.0.5",
-    "sinon": "^17.0.1",
+    "vitest": "^1.1.0",
     "write": "^2.0.0"
   },
   "dependencies": {

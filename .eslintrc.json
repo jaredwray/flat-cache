@@ -1,5 +1,5 @@
 {
-  "extends": ["eslint:recommended", "plugin:mocha/recommended", "prettier"],
+  "extends": ["eslint:recommended", "prettier"],
   "parserOptions": {
     "ecmaVersion": 2018,
     "sourceType": "module"
@@ -8,6 +8,5 @@
     "node": true,
     "es6": true,
     "mocha": true
-  },
-  "plugins": ["mocha"]
+  }
 }
