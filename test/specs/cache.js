@@ -211,6 +211,7 @@ describe('flat-cache', function () {
 
   describe('loading a cache using a filePath directly', function () {
     let file;
+    
     beforeEach(function () {
       file = path.resolve(__dirname, '../fixtures/.cache2/mycache-file.cache');
       rimraf(file);
