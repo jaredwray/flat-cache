@@ -34,7 +34,6 @@ const cache = {
 
   set _persisted(value) {
     this.__persisted = value;
-    this.keyv.set('persisted', value);
   },
 
   get _visited() {
@@ -43,7 +42,6 @@ const cache = {
 
   set _visited(value) {
     this.__visited = value;
-    this.keyv.set('visited', value);
   },
 
   /**
