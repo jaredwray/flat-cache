@@ -70,8 +70,5 @@ storage was needed and Bam! this module was born.
 
 ## License
 
-MIT
+[MIT](LISCENCE) © [Jared Wray](https://jaredwray.com)
 
-## Changelog
-
-[changelog](./changelog.md)

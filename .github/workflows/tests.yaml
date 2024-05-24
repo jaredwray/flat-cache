@@ -26,10 +26,7 @@ jobs:
         run: npm install
 
       - name: Testing
-        run: npm run verify --silent
-
-      - name: Run Codecov
-        run: npm run test:ci:cache
+        run: npm run test:ci
 
       - name: Run Codecov
         uses: codecov/codecov-action@v3
