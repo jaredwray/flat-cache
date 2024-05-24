@@ -1,15 +1,16 @@
-const fs = require('fs');
-const path = require('path');
+const fs = require('node:fs');
+const path = require('node:path');
 const flatted = require('flatted');
 
 function tryParse(filePath, defaultValue) {
-  let result;
-  try {
-    result = readJSON(filePath);
-  } catch (ex) {
-    result = defaultValue;
-  }
-  return result;
+	let result;
+	try {
+		result = readJSON(filePath);
+	} catch {
+		result = defaultValue;
+	}
+
+	return result;
 }
 
 /**
@@ -19,11 +20,11 @@ function tryParse(filePath, defaultValue) {
  * @returns {*} parse result
  */
 function readJSON(filePath) {
-  return flatted.parse(
-    fs.readFileSync(filePath, {
-      encoding: 'utf8',
-    })
-  );
+	return flatted.parse(
+		fs.readFileSync(filePath, {
+			encoding: 'utf8',
+		}),
+	);
 }
 
 /**
@@ -33,10 +34,10 @@ function readJSON(filePath) {
  * @param  {*} data Object to serialize
  */
 function writeJSON(filePath, data) {
-  fs.mkdirSync(path.dirname(filePath), {
-    recursive: true,
-  });
-  fs.writeFileSync(filePath, flatted.stringify(data));
+	fs.mkdirSync(path.dirname(filePath), {
+		recursive: true,
+	});
+	fs.writeFileSync(filePath, flatted.stringify(data));
 }
 
-module.exports = { tryParse, readJSON, writeJSON };
+module.exports = {tryParse, readJSON, writeJSON};

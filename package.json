@@ -15,25 +15,18 @@
     "src/utils.js"
   ],
   "engines": {
-    "node": ">=16"
+    "node": ">=18"
   },
   "precommit": [
-    "npm run verify --silent"
+    "npm run test"
   ],
   "prepush": [
-    "npm run verify --silent"
+    "npm run test"
   ],
   "scripts": {
-    "eslint": "eslint --cache --cache-location=node_modules/.cache/ ./src/**/*.js ./test/**/*.js",
     "clean": "rimraf ./node_modules ./package-lock.json ./yarn.lock ./coverage",
-    "eslint-fix": "npm run eslint -- --fix",
-    "autofix": "npm run eslint-fix",
-    "check": "npm run eslint",
-    "verify": "npm run eslint && npm run test:cache",
-    "test:cache": "c8 mocha -R spec test/specs",
-    "test:ci:cache": "c8 --reporter=lcov mocha -R spec test/specs",
-    "test": "npm run verify --silent",
-    "format": "prettier --write ."
+    "test:ci": "xo && c8 --reporter=lcov mocha -R spec test/specs",
+    "test": "xo --fix && c8 mocha -R spec test/specs"
   },
   "keywords": [
     "json cache",
@@ -46,18 +39,23 @@
   "devDependencies": {
     "c8": "^9.1.0",
     "chai": "^4.3.10",
-    "eslint": "^8.56.0",
-    "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-mocha": "^10.4.3",
     "glob-expand": "^0.2.1",
     "mocha": "^10.4.0",
-    "prettier": "^3.2.5",
     "rimraf": "^5.0.7",
     "sinon": "^18.0.0",
-    "write": "^2.0.0"
+    "webpack": "^5.91.0",
+    "write": "^2.0.0",
+    "xo": "^0.58.0"
   },
   "dependencies": {
     "flatted": "^3.3.1",
     "keyv": "^4.5.4"
+  },
+  "xo": {
+    "rules": {
+      "unicorn/prefer-module": "off",
+      "n/prefer-global/process": "off",
+      "unicorn/prevent-abbreviations": "off"
+    }
   }
 }
