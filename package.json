@@ -51,7 +51,7 @@
     "eslint-plugin-mocha": "^10.2.0",
     "glob-expand": "^0.2.1",
     "mocha": "^10.3.0",
-    "prettier": "^3.2.4",
+    "prettier": "^3.2.5",
     "rimraf": "^5.0.7",
     "sinon": "^17.0.1",
     "write": "^2.0.0"
