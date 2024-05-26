@@ -70,5 +70,5 @@ storage was needed and Bam! this module was born.
 
 ## License
 
-[MIT](LISCENCE) © [Jared Wray](https://jaredwray.com)
+[MIT](LICENSE) © [Jared Wray](https://jaredwray.com)
 
